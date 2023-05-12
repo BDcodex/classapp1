@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java animation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css"
+        integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css"
+        integrity="sha512-phGxLIsvHFArdI7IyLjv14dchvbVkEDaH95efvAae/y2exeWBQCQDpNFbOTdV1p4/pIa/XtbuDCnfhDEIXhvGQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="styles1.css"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+
+</head>
+
+<body class="body123">
+    <div class="wrapper2">
+        <div class="wrapper1">
+            <div class="item" id="it1"></div>
+            <div class="item" id="it2"></div>
+            <div class="item" id="it3"></div>
+            <div class="item" id="it4"></div>
+            <div class="item" id="it5"></div>
+            <div class="item" id="it6"></div>
+            <div class="item" id="it7"></div>
+            <div class="item" id="it8"></div>
+            <div class="item" id="it9"></div>
+            <div class="item" id="it10"></div>
+            <div class="item" id="it11"></div>
+            <div class="item" id="it12"></div>
+            <div class="item" id="it13"></div>
+            <div class="item" id="it14"></div>
+            <div class="item" id="it15"></div>
+            <div class="item" id="it16"></div>
+        </div>
+    </div>
+
+    <div class="bodywrapper">
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} m-2" id="msg" role="alert"
+            style="z-index:3;position:absolute;width:60%;left:20%;right:20%;text-align:center;">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- div1 start..................................................................................................................... -->
+        <div class="main">
+            <div id="backcol">
+                <h1 style="font-size:12vw;font-weight: 700;">ECB21'25</h1>
+            </div>
+
+            <!-- menu bar starts here ........................................................................................................-->
+            <i id="menulogo" class="bi bi-menu-button"></i>
+
+            <div class="menu">
+                <div class="items" id="item1" onclick="scrolltohome()">Home</div>
+                <div class="items" id="item2" onclick="scrolltonews()">News</div>
+                <div class="items" id="item3" onclick="scrolltogallery()">Gallery</div>
+                <div class="items" id="item4" onclick="scrolltoacademics()">Academics</div>
+                <div class="items" id="item5">About Us</div>
+                <div class="items" id="item6">Credits</div>
+            </div>
+            <!-- menubar end here.......................................................................................................... -->
+
+            <div
+                style="font-family: 'Orbitron', sans-serif;color: #ffffff;height:15vmin;width:auto;position:absolute;top:1vmin;right:12vmin;display:flex;justify-content:center;align-items:center;">
+                {% if request.user.is_authenticated %}
+                <p style="text-align: right;font-size:4vmin">Hello {{ user.first_name }} 👋</p>
+                {% endif %}
+            </div>
+
+            <!-- logo start................................................................................................................. -->
+            <i id="accountlogo" class="bi bi-person"></i>
+
+            <a href="signup">
+                <div class="signbuttons" id="signup">Sign-up</div>
+            </a>
+            <a href="signin">
+                <div class="signbuttons" id="login">Log-in</div>
+            </a>
+            <div class="signbuttons" id="logout">Log-out</div>
+            <!-- logoend.................................................................................................................... -->
+
+            <div class="backdiv" id="back1"></div>
+            <div class="backdiv" id="back2"></div>
+            <div class="backdiv" id="back3"></div>
+            <div class="backdiv" id="back4"></div>
+            <div class="backdiv" id="back5"></div>
+            <div class="backdiv" id="back6"></div>
+        </div>
+        <!-- div1 end......................................................................................................................... -->
+
+        <!-- div 2 start.................................................................................................................... -->
+        <div class="news">
+            <div class="newstop" data-aos="fade-left" data-aos-duration="1500">News</div>
+            <div class="leftnews" data-aos="fade-up" data-aos-duration="2000">
+                <h2>News</h2>
+            </div>
+            <div class="rightback">
+                <div id="backin">
+                    <div id="round"></div>
+                    <div id="gh"></div>
+                </div>
+
+                <div id="backin">
+                    <div id="round"></div>
+                    <div id="gh"></div>
+                </div>
+
+                <div id="backin">
+                    <div id="round"></div>
+                    <div id="gh"></div>
+                </div>
+
+                <div id="backin">
+                    <div id="round"></div>
+                    <div id="gh"></div>
+                </div>
+            </div>
+            <div class="rightfrontwrapper">
+                <div id="rightfront" data-aos="fade-left" data-aos-duration="2000">
+                    <div class="newsreader">
+                        <p style="display: inline;">something is wrong</p>
+                        <div id="blinkdiv"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- div 2 end................................................................................................................. -->
+        <!-- div 3 start................................................................................................................. -->
+        <div class="gallery1">
+            <div class="gallerytop" data-aos="fade-left" data-aos-duration="1500">Gallery</div>
+            <div class="quotewrapper">
+                <div class="memoryquote" data-aos="zoom-in" data-aos-duration="2000">The best thing about<span
+                        id="fancy1">&nbsp Memories</span>&nbsp &nbsp &nbsp is making them</div>
+                <div class="line1" data-aos="zoom-in" data-aos-duration="1500"></div>
+            </div>
+            <div class="griddiv">
+                <div class="griddy" id="griddy1">
+                    <img class="gridimag" id="gridimag1" src="../static/css/newimg17.jpg" alt="image1">
+                    <img class="gridimag" id="gridimag2" src="../static/css/newimg1.jpg" alt="image2">
+                    <img class="gridimag" id="gridimag3" src="../static/css/newimg2.jpg" alt="image3">
+                    <img class="gridimag" id="gridimag4" src="../static/css/newimg18.jpg" alt="image4">
+                    <img class="gridimag" id="gridimag5" src="../static/css/newimg8.jpg" alt="image5">
+                    <img class="gridimag" id="gridimag6" src="../static/css/newimg15.jpg" alt="image6">
+                    <img class="gridimag" id="gridimag7" src="../static/css/newimg6.jpg" alt="image7">
+                    <img class="gridimag" id="gridimag8" src="../static/css/newimg9.jpg" alt="image8">
+                </div>
+                <div class="griddy" id="griddy2">
+                    <img class="gridimag" id="gridimag9" src="../static/css/newimg4.jpg" alt="image9">
+                    <img class="gridimag" id="gridimag10" src="../static/css/newimg23.jpg" alt="image10">
+                    <img class="gridimag" id="gridimag11" src="../static/css/newimg10.jpg" alt="image11">
+                    <img class="gridimag" id="gridimag12" src="../static/css/newimg12.jpg" alt="image12">
+                    <img class="gridimag" id="gridimag13" src="../static/css/newimg13.jpg" alt="image13">
+                    <img class="gridimag" id="gridimag14" src="../static/css/newimg14.jpg" alt="image14">
+                    <img class="gridimag" id="gridimag15" src="../static/css/newimg5.jpg" alt="image15">
+                    <img class="gridimag" id="gridimag16" src="../static/css/newimg16.jpg" alt="image16">
+                </div>
+                <div class="griddy" id="griddy3">
+                    <img class="gridimag" id="gridimag17" src="../static/css/newimg11.jpg" alt="image17">
+                    <img class="gridimag" id="gridimag18" src="../static/css/newimg3.jpg" alt="image18">
+                    <img class="gridimag" id="gridimag19" src="../static/css/newimg19.jpg" alt="image19">
+                    <img class="gridimag" id="gridimag20" src="../static/css/newimg20.jpg" alt="image20">
+                    <img class="gridimag" id="gridimag21" src="../static/css/newimg21.jpg" alt="image21">
+                    <img class="gridimag" id="gridimag22" src="../static/css/newimg22.jpg" alt="image22">
+                    <img class="gridimag" id="gridimag23" src="../static/css/newimg7.jpg" alt="image23">
+                    <img class="gridimag" id="gridimag24" src="../static/css/newimg24.jpg" alt="image24">
+                </div>
+            </div>
+
+            <div class="galbottom">
+                <div class="wrapdivgal">
+                    <div class="galbotdiv" id="galdiv1"></div>
+                    <div class="galbotdiv" id="galdiv2"></div>
+                    <div class="galbotdiv" id="galdiv3"></div>
+                    <div class="galbotdiv" id="galdiv4"></div>
+                    <div class="galbotdiv" id="galdiv5"></div>
+                    <div class="galbotdiv" id="galdiv6"></div>
+                    <div class="galbotdiv" id="galdiv7"></div>
+                    <div class="galbotdiv" id="galdiv8"></div>
+                    <div class="galbotdiv" id="galdiv9"></div>
+                </div>
+                <div class="wrapper" data-aos="zoom-in" data-aos-duration="2000">
+                    <div class="box-area">
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                        <div class="box3"></div>
+                        <div class="box4"></div>
+                        <div class="box5"></div>
+                        <div class="box6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="linkwrapper">
+                <div id="linkmovediv">Click for More</div>
+                <a class="linkmove" id='linkmove3' href="https://t.me/+VOIfuvyMu_BjYzk1" target="_blank"><i
+                        class="bi bi-link"></i></a>
+                <a class="linkmove" id='linkmove1'
+                    href="https://drive.google.com/drive/folders/1PnpKcrqHfTWYJS7KFhPuaOqQCZBSTGTM" target="_blank"><i
+                        class="bi bi-link"></i></a>
+                <a class="linkmove" id='linkmove2'
+                    href="https://drive.google.com/drive/folders/1y-JYoz7PQbcYVvFrdO6LswqguMtyraDC?usp=share_link"
+                    target="_blank"><i class="bi bi-link"></i></a>
+            </div>
+        </div>
+        <!-- div 3 end..................................................................................................................... -->
+        <div class="imgonclickwrapper">
+            <div class="imgclick">
+                <img class="modal-content" id="img01">
+                <i class="bi bi-x" id="imgcross"></i>
+            </div>
+        </div>
+        <!-- div 4 start....................................................................................................................  -->
+        <div class="academics">
+            <div class="academicstop" data-aos="fade-left" data-aos-duration="1500">Academics</div>
+            <div class="acawrapper">
+                <div class="acaleft">
+                    <div class="acaitemwrap" id="acaitemwrap1">
+                        <div class="acaitem" id="acaitem1">
+                            <div class="aca1" id="aca11">
+                                Question Papers
+                            </div>
+                        </div>
+                    </div>
+                    <div class="acaitemwrap" id="acaitemwrap2">
+                        <div class="acaitem" id="acaitem2">
+                            <div class="aca1" id="aca12">
+                                Books
+                            </div>
+                        </div>
+                    </div>
+                    <div class="acaitemwrap" id="acaitemwrap3">
+                        <div class="acaitem" id="acaitem3">
+                            <div class="aca1" id="aca13">
+                                Youtube Videos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="acaitemwrap" id="acaitemwrap4">
+                        <div class="acaitem" id="acaitem4">
+                            <div class="aca1" id="aca14">
+                                Notes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="acaright">
+                    <div class="rightitem">
+                        <div class="qpaper"></div>
+                        <div class="books"></div>
+                        <div class="youvideo"></div>
+                        <div class="rinotes"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <script>
+        const element1 = document.querySelector('.item');
+        const element2 = document.querySelector('.wrapper2');
+        const element3 = document.querySelector('.bodywrapper');
+
+        element1.addEventListener('animationend', () => {
+            element2.style.display = 'none';
+            element3.style.display = 'block';
+        });
+    </script>
+
+    <script>
+        AOS.init();
+    </script>
+
+    <script>
+        window.addEventListener('resize', function () {
+            var screenWidth = window.innerWidth;
+            console.log("screen width = ", screenWidth)
+            if (screenWidth < 830) {
+                console.log('akjfasasdfasdfa')
+            }
+        });
+    </script>
+
+    <script>
+        var buttonToggle = document.querySelector('#menulogo');
+        buttonToggle.addEventListener('click', toggleClass);
+
+        function toggleClass() {
+            var element1 = document.querySelector('.menu');
+            element1.classList.toggle('new-class');
+        }
+
+        var buttonToggle1 = document.querySelector('#accountlogo');
+        buttonToggle1.addEventListener('click', toggleClass1);
+
+        function toggleClass1() {
+            var element2 = document.querySelectorAll('.signbuttons');
+            for (const element of element2)
+                element.classList.toggle('new-class1');
+        }
+    </script>
+
+    <script>
+        function changeText() {
+            // console.log("myfunc called")
+            var heading = document.querySelector('.newsreader p');
+
+            var countries = ['vladimir putin asks war facilities from us with us indian ambassador an mg university student.', 'This is 3rd march october 2023', 'I am currently working on the news stuff',
+                'Want to add a caret too', 'See you soon by by tata tata'];
+
+            var j = 0;
+            var b;
+            var i;
+            function myfunc() {
+
+                a = countries[j]
+                i = 0;
+                b = a.length;
+                // console.log("the length of elemnt is:", b)
+                function tolly() {
+
+                    if (i == b - 1) {
+                        clearInterval(timer2);
+                        // console.log("clearinterval called");
+                    }
+
+                    heading.innerHTML += a[i];
+                    // console.log("the charac is:", a[i], "index is", i);
+                    if (a[i] === undefined) {
+                        location.reload(heading);
+                    }
+                    i++;
+                }
+                timer2 = setInterval(tolly, 200);
+
+                heading.innerHTML = "";
+                j++;
+
+                if (j == countries.length) {
+                    j = 0;
+                }
+                timer3 = setTimeout(myfunc, (300 * b) + 1000);
+
+            }
+            myfunc();
+
+        }
+        changeText();
+    </script>
+
+    <script>
+        var bodyelem = document.querySelector(".body123")
+        var modal = document.querySelector(".imgonclickwrapper");
+        var imges = document.getElementsByClassName("gridimag");
+        var modalImg = document.getElementById("img01");
+        console.log(imges)
+        for (let i = 0; i < imges.length; i++) {
+            console.log(imges[i])
+            imges[i].onclick = function () {
+                console.log("hello guys the best element is", imges[i])
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                modal.classList.add("body34")
+            }
+        }
+
+        var imgcross = document.getElementById("imgcross")
+        imgcross.onclick = function () {
+            modal.style.display = "none";
+            modal.classList.remove("body34")
+        }
+
+        var linkmove1 = document.getElementById("linkmove1")
+        var linkmove2 = document.getElementById("linkmove2")
+        var linkmove3 = document.getElementById("linkmove3")
+        var linkmovediv = document.getElementById("linkmovediv")
+        linkmovediv.addEventListener('click', toggleClass1);
+        function toggleClass1() {
+            linkmove1.classList.toggle('linkmove12new');
+            linkmove2.classList.toggle('linkmove12new');
+            linkmove3.classList.toggle('linkmove12new');
+        }
+    </script>
+
+    <script>
+        var acabut = document.querySelectorAll('.acaitem')
+
+        for (var i = 0; i < acabut.length; i++) {
+            acabut[i].addEventListener("click", function () {
+                var idthis = this.id
+
+                var idthiselem = document.getElementById(idthis)
+                var parentid = idthiselem.parentElement.id
+                var parentidelem = document.getElementById(parentid)
+                var thisclass = parentidelem.classList.item(0)
+                var rightelem = document.querySelector(".rightitem")
+
+                console.log(idthis);
+                console.log("parent id=", parentid)
+
+                var thisclasselem = document.getElementsByClassName(thisclass)
+                console.log("class name = ", thisclass)
+                console.log("elements having classname are:", thisclasselem)
+                for (var j = 0; j < thisclasselem.length; j++) {
+                    console.log("hai bjhaandfs")
+                    console.log(thisclasselem[j].id)
+                    if (thisclasselem[j].id != this.id) {
+                        thisclasselem[j].style.backgroundColor = "transparent"
+                        console.log("color is red")
+                    }
+                }
+                parentidelem.style.backgroundColor = "#32343a";
+                rightelem.style.backgroundColor = "#32343a";
+            });
+        }
+
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- link to dissapesring function to work  -->
+    <script>
+        setTimeout(function () {
+            if ($('#msg').length > 0) {
+                $('#msg').remove();
+            }
+        }, 3000) 
+    </script>
+
+    <script>
+        function scrolltohome() {
+            var scrolhome = document.querySelector(".main");
+            scrolhome.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        }
+        function scrolltonews() {
+            var scrolnews = document.querySelector(".news");
+            scrolnews.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        }
+        function scrolltogallery() {
+            var scrolgallery = document.querySelector(".gallery1");
+            scrolgallery.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        }
+        function scrolltoacademics() {
+            var scrolacademics = document.querySelector(".academics");
+            scrolacademics.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        }
+    </script>
+
+</body>
+
+</html>
